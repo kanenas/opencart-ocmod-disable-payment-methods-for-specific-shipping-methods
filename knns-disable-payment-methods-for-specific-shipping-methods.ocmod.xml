@@ -10,9 +10,9 @@
 		<operation error="skip">
 			<search><![CDATA[public function getMethod($address, $total) {]]></search>
 			<add position="after"><![CDATA[
-			// kanenas: knns_disable_payment_methods_for_specific_shipping_methods.xml (start) <<
+			// kanenas: knns_disable_payment_methods_for_specific_shipping_methods.ocmod.xml (start) <<
 			if ($this->session->data['shipping_method']['code'] == 'pickup.pickup') return;
-			// kanenas: knns_disable_payment_methods_for_specific_shipping_methods.xml (end) <<
+			// kanenas: knns_disable_payment_methods_for_specific_shipping_methods.ocmod.xml (end) <<
 			]]></add>
 		</operation>
 	</file>
@@ -20,13 +20,13 @@
 		<operation error="skip">
 			<search><![CDATA[public function getMethod($address, $total) {]]></search>
 			<add position="after"><![CDATA[
-			// kanenas: knns_disable_payment_methods_for_specific_shipping_methods.xml (start) <<
+			// kanenas: knns_disable_payment_methods_for_specific_shipping_methods.ocmod.xml (start) <<
 			if ($this->session->data['shipping_method']['code'] == 'xshippingpro.xshippingpro1' ||
 			    $this->session->data['shipping_method']['code'] == 'xshippingpro.xshippingpro2' ||
 			    $this->session->data['shipping_method']['code'] == 'xshippingpro.xshippingpro3' ||
 			    $this->session->data['shipping_method']['code'] == 'xshippingpro.xshippingpro4'
 			) return;
-			// kanenas: knns_disable_payment_methods_for_specific_shipping_methods.xml (end) <<
+			// kanenas: knns_disable_payment_methods_for_specific_shipping_methods.ocmod.xml (end) <<
 			]]></add>
 		</operation>
 	</file>
