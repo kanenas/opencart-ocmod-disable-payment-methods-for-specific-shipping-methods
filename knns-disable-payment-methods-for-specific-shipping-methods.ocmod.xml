@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<id><![CDATA[Disable payment methods for specific shipping methods]]></id>
+	<name><![CDATA[Disable payment methods for specific shipping methods]]></name>
+	<code>knns-disable-payment-methods-for-specific-shipping-methods</code>
+	<version>1.0.0</version>
+	<author><![CDATA[<font color="#7F458C"><b>kanenas.net (aka Nikolas Branis)</b></font> - nbran@kanenas.net]]></author>
+	<link>https://kanenas.net/</link>
+	<file path="catalog/model/extension/payment/cod.php" error="log">
+		<operation error="skip">
+			<search><![CDATA[public function getMethod($address, $total) {]]></search>
+			<add position="after"><![CDATA[
+			// kanenas: knns_disable_payment_methods_for_specific_shipping_methods.xml (start) <<
+			if ($this->session->data['shipping_method']['code'] == 'pickup.pickup') return;
+			// kanenas: knns_disable_payment_methods_for_specific_shipping_methods.xml (end) <<
+			]]></add>
+		</operation>
+	</file>
+	<file path="catalog/model/extension/payment/pay_in_store.php" error="log">
+		<operation error="skip">
+			<search><![CDATA[public function getMethod($address, $total) {]]></search>
+			<add position="after"><![CDATA[
+			// kanenas: knns_disable_payment_methods_for_specific_shipping_methods.xml (start) <<
+			if ($this->session->data['shipping_method']['code'] == 'xshippingpro.xshippingpro1' ||
+			    $this->session->data['shipping_method']['code'] == 'xshippingpro.xshippingpro2' ||
+			    $this->session->data['shipping_method']['code'] == 'xshippingpro.xshippingpro3' ||
+			    $this->session->data['shipping_method']['code'] == 'xshippingpro.xshippingpro4'
+			) return;
+			// kanenas: knns_disable_payment_methods_for_specific_shipping_methods.xml (end) <<
+			]]></add>
+		</operation>
+	</file>
+</modification>
